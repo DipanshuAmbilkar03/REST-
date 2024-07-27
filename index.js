@@ -14,6 +14,24 @@ app.get("/" , (req ,res) => {
     res.send("server working well!")
 })
 
+let posts = [
+    {
+        username : 'user1',
+        age : 23,
+    },
+    {
+        username : 'user2',
+        age : 17,
+    },
+    {
+        username : 'user3',
+        age : 20,
+    },
+];
+
+app.get("/posts" , (req ,res) => {
+    res.render("index.ejs", {posts})
+})
 app.listen(port, () => {
     console.log(`listening port : ${port}`);
 })
