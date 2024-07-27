@@ -12,7 +12,8 @@
         <div class="post">
             <h3 class="urname">@ <%= post.username %> </h3>
             <h4 class="age">age <%= post.age %> </h4>
-            <hr>
+            <br>
+            <button><a href="http://localhost:8080/posts/<%=post.id%>">YOUR ID</a></button>
         </div>
     <% } %>
     <button><a href="http://localhost:8080/posts/new">Create new Post.</a></button>
