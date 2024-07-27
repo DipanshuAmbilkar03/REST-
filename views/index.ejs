@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Posts</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1>Quora Posts</h1>
     <% for(post of posts) { %>
-        <div>
-            <h3>@ <%= post.username %> </h3>
-            <h4>age <%= post.age %> </h4>
+        <div class="post">
+            <h3 class="urname">@ <%= post.username %> </h3>
+            <h4 class="age">age <%= post.age %> </h4>
+            <hr>
         </div>
     <% } %>
 </body>
