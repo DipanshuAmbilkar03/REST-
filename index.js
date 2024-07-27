@@ -16,14 +16,17 @@ app.get("/" , (req ,res) => {
 
 let posts = [
     {
+        id : "1a",
         username : 'user1',
         age : 23,
     },
     {
+        id : "2b",
         username : 'user2',
         age : 17,
     },
     {
+        id : "3c",
         username : 'user3',
         age : 20,
     },
@@ -41,6 +44,13 @@ app.post("/posts" , (req , res) => {
     let {username ,age} = req.body;
     posts.push({username, age})
     res.redirect("/posts")
+})
+
+app.get("/posts/:id" , (req , res) => {
+    let {id} = req.params;
+    let post = posts.find( (p) => id === p.id );
+    console.log(post);
+    res.render("show.ejs" , {post})
 })
 
 app.listen(port, () => {
