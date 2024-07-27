@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine :", "ejs");
 app.set("views", path.join(__dirname, "views"))
 
-app.set(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public")))
 
 app.get("/" , (req ,res) => {
     res.send("server working well!")
@@ -30,6 +30,9 @@ let posts = [
 ];
 
 app.get("/posts" , (req ,res) => {
+    res.render("index.ejs", {posts})
+})
+app.get("/posts/new" , (req ,res) => {
     res.render("index.ejs", {posts})
 })
 app.listen(port, () => {
