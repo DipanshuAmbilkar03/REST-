@@ -6,15 +6,14 @@ const path = require("path");
 app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine :", "ejs");
-app.set("views", path.join(__dirname, "public"))
+app.set("views", path.join(__dirname, "views"))
 
-app.set(express.static(path.join(__dirname, "views")))
+app.set(express.static(path.join(__dirname, "public")))
 
 app.get("/" , (req ,res) => {
-    console.log("server working well!")
+    res.send("server working well!")
 })
 
 app.listen(port, () => {
     console.log(`listening port : ${port}`);
 })
-
