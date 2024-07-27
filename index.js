@@ -38,8 +38,10 @@ app.get("/posts/new" , (req ,res) => {
 });
 
 app.post("/posts" , (req , res) => {
-    console.log(req.body);
+    let {username ,age} = req.body;
+    posts.push({username, age})
     res.send("post request working.")
+    console.log(posts);
 })
 
 app.listen(port, () => {
