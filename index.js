@@ -3,7 +3,7 @@ const app = express();
 const port = 8080;
 const path = require("path");
 const { v4: uuidv4 } = require('uuid');
-const method_or = require("method-override");
+const methodOverride = require("method-override");
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -60,9 +60,14 @@ app.patch("/posts/:id" , (req , res) => {
     let post = posts.find( (p) => id === p.id );
     post.age = age_;
     console.log(post)
-    res.send("patch request working!");
+    res.redirect("/posts")
 })
 
+app.delete("/posts/:id" , (req , res) => {
+    let { id } = req.params;
+    let post = posts.find( (p) => id === p.id );
+    res.send("Post deleted")
+});
 
 app.listen(port, () => {
     console.log(`listening port : ${port}`);
