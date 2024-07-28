@@ -43,19 +43,29 @@ app.get("/posts/new" , (req ,res) => {
 
 app.post("/posts" , (req , res) => {
     let {username ,age} = req.body;
-    let newID = uuidv4(); 
-    posts.push({newID , username, age})
-    // posts.push({username, age})
+    let id = uuidv4(); 
+    // posts.push({id,username, age})
+    posts.push({id,username,age})
     res.redirect("/posts")
-})
+});
 
 app.get("/posts/:id" , (req , res) => {
     let {id} = req.params;
     let post = posts.find( (p) => id === p.id );
     console.log(id);
     res.render("show.ejs" , {post})
+});
+
+app.patch("/posts/:id" , (req , res) => {
+    let {id} = req.params;
+    let age_ = req.body.age;
+    let post = posts.find( (p) => id === p.id );
+    post.age = age_;
+    console.log(post)
+    res.send("patch request working!");
 })
+
 
 app.listen(port, () => {
     console.log(`listening port : ${port}`);
-})
+});
