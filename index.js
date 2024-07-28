@@ -15,22 +15,11 @@ app.get("/" , (req ,res) => {
     res.send("server working well!")
 })
 
-let posts = [
-    {
-        id : uuidv4(),
-        username : 'user1',
-        age : 23,
-    },
-    {
-        id : uuidv4(),
-        username : 'user2',
-        age : 17,
-    },
-    {
-        id : uuidv4(),
-        username : 'user3',
-        age : 20,
-    },
+let posts = 
+[
+    {id : uuidv4(),username : 'user1',age : 23,},
+    {id : uuidv4(),username : 'user2',age : 17,},
+    {id : uuidv4(),username : 'user3',age : 20,},
 ];
 
 app.get("/posts" , (req ,res) => {
@@ -59,7 +48,8 @@ app.get("/posts/:id" , (req , res) => {
 app.get("/posts/:id/edit" , (req , res) => {
     let { id } = req.params;
     let post = posts.find( (p) => id === p.id );
-    res.render("edit.ejs")
+    console.log(post.id)
+    res.render("edit.ejs", {post})
 });
 app.patch("/posts/:id" , (req , res) => {
     let {id} = req.params;
