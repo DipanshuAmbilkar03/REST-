@@ -3,8 +3,6 @@ const app = express();
 const port = 8080;
 const path = require("path");
 const { v4: uuidv4 } = require('uuid');
-uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
-
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -19,17 +17,17 @@ app.get("/" , (req ,res) => {
 
 let posts = [
     {
-        id : "1a",
+        id : uuidv4(),
         username : 'user1',
         age : 23,
     },
     {
-        id : "2b",
+        id : uuidv4(),
         username : 'user2',
         age : 17,
     },
     {
-        id : "3c",
+        id : uuidv4(),
         username : 'user3',
         age : 20,
     },
